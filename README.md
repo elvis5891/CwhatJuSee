@@ -13,7 +13,7 @@ Prerequisite: beautifulsoup, juyter
 Usage: python CwhatJuSee.py ipynb_file output_dir 
 
 If the html artifact is not 100% as what you saw in Jupyter lab, 
-just copy the /css/custom.css into the same directory of the html artifact.
+just copy the custom.css into the same directory of the html artifact.
 
 Simple and sweet
 
