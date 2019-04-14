@@ -14,14 +14,14 @@ if len(sys.argv) != 3:
 input_file = sys.argv[1]
 output_dir = os.path.join(os.getcwd(), sys.argv[2])
 
-print "input_file", input_file
-print "output_dir", output_dir
+print("input_file", input_file)
+print("output_dir", output_dir)
 
 def run(command):
     stdout, stderr = Popen(command.split(), stdout=PIPE,
                            stderr=PIPE, stdin=PIPE).communicate(input='a\n')
-    print stdout
-    print stderr
+    print(stdout)
+    print(stderr)
 
 def remove_inputs_cell(output_dir):
     with open(output_dir, 'r') as f:
