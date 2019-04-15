@@ -44,7 +44,7 @@ def remove_inputs_cell(output_dir):
 
 #-- too easy to be a class --    
 print("converting ipynb file " + input_file)
-run("""/anaconda3/bin/jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %
+run("""/home/ubuntu/.local/bin/jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %
     (input_file, output_dir))
 remove_inputs_cell(output_dir +"/"+os.path.basename(input_file)[:-5] + "html")
 print("Done!!")
