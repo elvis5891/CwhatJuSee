@@ -19,16 +19,17 @@ print("output_dir", output_dir)
 
 def run(command):
     stdout, stderr = Popen(command.split(), stdout=PIPE,
-                           stderr=PIPE, stdin=PIPE).communicate(input='a\n')
+                           stderr=PIPE, stdin=PIPE, encoding = 'utf8').communicate(input='a\n')
     print(stdout)
     print(stderr)
+
 
 def remove_inputs_cell(output_dir):
     with open(output_dir, 'r') as f:
         html_source = f.read()
         soup = BeautifulSoup(html_source.replace(
             "class=\"container\"", ""), "html.parser")
-    usless_clase = ["prompt input_prompt", "input_area", "prompt",
+    usless_clase = ["prompt input_prompt", "input_area", "prompt", "input",
                     "output_subarea output_stream output_stderr output_text"]
     for ele in usless_clase:
         for div in soup.find_all('div', class_=(ele)):
