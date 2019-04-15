@@ -39,7 +39,6 @@ def remove_inputs_cell(output_dir):
     with codecs.open(output_dir, 'w', encoding='utf-8') as f:
         f.write(soup.prettify())
 
-
 #-- too easy to be a class --    
 print("converting ipynb file " + input_file)
 run("""jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" % (input_file, output_dir))
