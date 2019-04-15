@@ -25,7 +25,6 @@ def run(command):
     print(erroutput)
     p.wait()
 
-
 def remove_inputs_cell(output_dir):
     with open(output_dir, 'r') as f:
         html_source = f.read()
