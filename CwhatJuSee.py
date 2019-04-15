@@ -21,9 +21,10 @@ print("output_dir", output_dir)
 
 def run(command):
     p = subprocess.Popen(command.split(), stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
-    (stdoutput, erroutput) = p.communicate()
+                            stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
     p.wait()
+    (stdoutput, erroutput) = p.communicate()
+    
     print(stdoutput)
     print(erroutput)
 
