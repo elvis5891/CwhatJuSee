@@ -2,7 +2,7 @@
 import sys
 import os
 import glob
-from subprocess import Popen, PIPE
+import subprocess
 from bs4 import BeautifulSoup
 import codecs
 import sys
@@ -18,10 +18,12 @@ print("input_file", input_file)
 print("output_dir", output_dir)
 
 def run(command):
-    stdout, stderr = Popen(command.split(), stdout=PIPE,
-                           stderr=PIPE, stdin=PIPE, encoding = 'utf8').communicate(input='a\n')
-    print(stdout)
-    print(stderr)
+    p = subprocess.Popen(command.split(), stdout=subprocess.PIPE,
+                                      stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
+    (stdoutput, erroutput) = p.communicate()
+    p.wait()
+    print(stdoutput)
+    print(erroutput)
 
 
 def remove_inputs_cell(output_dir):
