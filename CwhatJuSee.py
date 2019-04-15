@@ -25,7 +25,6 @@ def run(command):
                             stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
     p.wait()
     (stdoutput, erroutput) = p.communicate()
-    
     print(stdoutput)
     print(erroutput)
 
