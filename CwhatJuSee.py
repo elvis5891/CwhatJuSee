@@ -2,7 +2,6 @@
 import sys
 import os
 import glob
-# import subprocess
 import os
 from bs4 import BeautifulSoup
 import codecs
