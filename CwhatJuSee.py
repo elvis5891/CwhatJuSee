@@ -19,7 +19,7 @@ print("output_dir", output_dir)
 
 def run(command):
     stdout, stderr = Popen(command.split(), stdout=PIPE,
-                           stderr=PIPE, stdin=PIPE).communicate(input='a\n')
+                           stderr=PIPE, stdin=PIPE, encoding='utf8').communicate(input='a\n')
     print(stdout)
     print(stderr)
 
