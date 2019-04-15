@@ -3,6 +3,7 @@ import sys
 import os
 import glob
 import os
+import subprocess
 from bs4 import BeautifulSoup
 import codecs
 import sys
@@ -16,6 +17,16 @@ output_dir = os.path.join(os.getcwd(), sys.argv[2])
 
 print("input_file", input_file)
 print("output_dir", output_dir)
+
+
+def run(command):
+    p = subprocess.Popen(command.split(), stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
+    (stdoutput, erroutput) = p.communicate()
+    p.wait()
+    print(stdoutput)
+    print(erroutput)
+
 
 def remove_inputs_cell(output_dir):
     with open(output_dir, 'r') as f:
@@ -32,6 +43,7 @@ def remove_inputs_cell(output_dir):
 
 #-- too easy to be a class --    
 print("converting ipynb file " + input_file)
-os.system("""jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %(input_file, output_dir))
+run("""jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %
+    (input_file, output_dir))
 remove_inputs_cell(output_dir +"/"+os.path.basename(input_file)[:-5] + "html")
 print("Done!!")
