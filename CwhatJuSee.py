@@ -21,9 +21,10 @@ def run(command):
     p = subprocess.Popen(command.split(), stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
     (stdoutput, erroutput) = p.communicate()    
+    p.wait()
     print(stdoutput)
     print(erroutput)
-    p.wait()
+    
 
 def remove_inputs_cell(output_dir):
     with open(output_dir, 'r') as f:
