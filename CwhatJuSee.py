@@ -41,7 +41,7 @@ def remove_inputs_cell(output_dir):
         f.write(soup.prettify())
 
 
-# -- too easy to be a class --
+# -- too easy to be a class -
 print("converting ipynb file " + input_file)
 run("""/home/ubuntu/.local/bin/jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %
     (input_file, output_dir))
