@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 import sys
-import os
 import glob
 import os
 import subprocess
@@ -8,7 +7,6 @@ from bs4 import BeautifulSoup
 import codecs
 import sys
 import time
-
 
 
 if len(sys.argv) != 3:
@@ -22,7 +20,7 @@ print("output_dir", output_dir)
 
 def run(command):
     p = subprocess.Popen(command.split(), stdout=subprocess.PIPE,
-                            stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
+                         stderr=subprocess.PIPE, stdin=subprocess.PIPE, encoding='utf8')
     p.wait()
     (stdoutput, erroutput) = p.communicate()
     print(stdoutput)
@@ -42,9 +40,10 @@ def remove_inputs_cell(output_dir):
     with codecs.open(output_dir, 'w', encoding='utf-8') as f:
         f.write(soup.prettify())
 
-#-- too easy to be a class --    
+
+# -- too easy to be a class --
 print("converting ipynb file " + input_file)
 run("""/home/ubuntu/.local/bin/jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to html --execute %s --output-dir %s""" %
     (input_file, output_dir))
-remove_inputs_cell(output_dir +"/"+os.path.basename(input_file)[:-5] + "html")
+remove_inputs_cell(output_dir + "/"+os.path.basename(input_file)[:-5] + "html")
 print("Done!!")
